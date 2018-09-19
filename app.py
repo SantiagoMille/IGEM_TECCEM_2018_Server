@@ -21,7 +21,7 @@ def index():
 def sendData():
     hola = request.get_json()['data']
     time.strftime("%c")
-    ref = db.reference('color/'+time.strftime("%Y/%b/%d-%H:%M:%S"))
+    ref = db.reference('color/'+time.strftime("%Y/%b/%d/%H:%M:%S"))
     ref.set({
     	'data':hola
     	})
