@@ -19,12 +19,13 @@ def index():
 
 @app.route('/sendData',methods=['POST'])
 def sendData():
-    print('holaaa');
-    hola = request.get_json()['data']
+    
+    data = request.get_json()['data']
+    token = request.get_json()['token']
     time.strftime("%c")
-    ref = db.reference('color/'+time.strftime("%Y/%b/%d/%H:%M:%S"))
+    ref = db.reference(token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S"))
     ref.set({
-    	'data':hola
+    	'data':data
     	})
     return "true"
 
