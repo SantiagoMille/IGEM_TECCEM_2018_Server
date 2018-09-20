@@ -28,5 +28,15 @@ def sendData():
     	})
     return "true"
 
+@app.route('/token',methods=['POST'])
+def token():
+    token = request.get_json()['token']
+    if len(token)<=3:
+        x=str(time.time())
+    else:
+        x='true'
+        
+    return x
+
 if __name__ == "__name__":
 	app.run()
