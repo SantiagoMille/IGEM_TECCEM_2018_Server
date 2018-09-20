@@ -31,7 +31,7 @@ def sendData():
 @app.route('/token',methods=['POST'])
 def token():
     token = request.get_json()['token']
-    if len(token)<=3:
+    if len(token)<=5:
         x=str(time.time())
     else:
         x='true'
