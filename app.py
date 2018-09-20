@@ -23,6 +23,7 @@ def sendData():
     data = request.get_json()['data']
     token = request.get_json()['token']
     time.strftime("%c")
+    print(token)
     ref = db.reference(token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S"))
     ref.set({
     	'data':data
@@ -35,7 +36,7 @@ def token():
     if len(token)<=5:
         x=str(time.time())
     else:
-        x='true'
+        x=token
         
     return x
 
