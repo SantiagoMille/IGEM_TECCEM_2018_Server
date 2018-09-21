@@ -15,13 +15,14 @@ app = Flask(__name__)
  
 @app.route('/')
 def index():
-	return "Hello World!"
+	return "Hello IGEM!"
 
 @app.route('/sendData',methods=['POST'])
 def sendData():
-    
     data = request.get_json()['data']
     token = request.get_json()['token']
+    print(token)
+    print(data)
     time.strftime("%c")
     print(token)
     ref = db.reference(token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S"))
@@ -33,6 +34,7 @@ def sendData():
 @app.route('/token',methods=['POST'])
 def token():
     token = request.get_json()['token']
+    print(token)
     if len(token)<=5:
         x=str(time.time())
     else:
