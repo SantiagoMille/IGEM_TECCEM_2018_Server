@@ -19,17 +19,20 @@ def index():
 
 @app.route('/sendData',methods=['POST'])
 def sendData():
-    data = request.get_json()['data']
-    token = request.get_json()['token']
-    print(token)
-    print(data)
-    time.strftime("%c")
-    print(token)
-    ref = db.reference(token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S"))
-    ref.set({
-    	'data':data
-    	})
-    return "true"
+    try:
+        data = request.get_json()['data']
+        token = request.get_json()['token']
+        print(token)
+        print(data)
+        time.strftime("%c")
+        print(token)
+        ref = db.reference(token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S"))
+        ref.set({
+        	'data':data
+        	})
+        return "true"
+    except ValueError:
+        return "false"
 
 @app.route('/token',methods=['POST'])
 def token():
