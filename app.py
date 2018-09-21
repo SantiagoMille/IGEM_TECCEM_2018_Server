@@ -22,10 +22,10 @@ def sendData():
     try:
         data = request.get_json()['data']
         token = request.get_json()['token']
-        print(token)
-        print(data)
+        print("token1: ",token)
+        print("data1:",data)
         time.strftime("%c")
-        print(token)
+        print("token2: ",token)
         ref = db.reference(token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S"))
         ref.set({
         	'data':data
