@@ -26,7 +26,7 @@ def sendData():
         print("data1:",data)
         time.strftime("%c")
         print("token2: ",token)
-        url = token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S")
+        url = token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S").replace(".", "")
         print(url)
         ref = db.reference(url)
         print("token3: ",token)
