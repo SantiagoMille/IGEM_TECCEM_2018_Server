@@ -26,12 +26,15 @@ def sendData():
         print("data1:",data)
         time.strftime("%c")
         print("token2: ",token)
+        print(type(token) is str)
         ref = db.reference(token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S"))
+        print("token3: ",token)
         ref.set({
         	'data':data
         	})
         return "true"
     except ValueError:
+        print(":(((")
         return "false"
 
 @app.route('/token',methods=['POST'])
