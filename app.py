@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 import time
-
+import re
 
 cred = credentials.Certificate('./igem-texem-firebase-adminsdk-0yf5a-da8a519359.json')
 #default_app = firebase_admin.initialize_app(cred)
@@ -21,19 +21,16 @@ def index():
 def sendData():
     try:
         data = request.get_json()['data']
+        numbers= re.findall(r"[\d']+", data)
         token = request.get_json()['token']
-        print("token1: ",token)
-        print("data1:",data)
         time.strftime("%c")
-        print("token2: ",token)
         url = token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S")
-        print(url)
         url = url.replace(".", "")
-        print(url)
         ref = db.reference(url)
-        print("token3: ",token)
         ref.set({
-        	'data':data
+        	'R':numbers[0],
+            'G':numbers[1],
+            'B':numbers[2],
         	})
         return "true"
     except ValueError:
@@ -42,8 +39,9 @@ def sendData():
 
 @app.route('/token',methods=['POST'])
 def token():
+    token='';
     token = request.get_json()['token']
-    print(token)
+    
     if len(token)<=5:
         x=str(time.time())
     else:
