@@ -21,16 +21,19 @@ def index():
 def sendData():
     try:
         data = request.get_json()['data']
-        numbers= re.findall(r"[\d']+", data)
+        numbers= re.findall(r"[-+]?\d*\.\d+|\d+", data)
+        print(numbers)
         token = request.get_json()['token']
         time.strftime("%c")
-        url = token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S")
+        url = 'data/'+token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S")
         url = url.replace(".", "")
         ref = db.reference(url)
         ref.set({
         	'R':numbers[0],
             'G':numbers[1],
             'B':numbers[2],
+            'T':numbers[3],
+            'C':numbers[4]
         	})
         return "true"
     except ValueError:
