@@ -46,7 +46,8 @@ def token():
     token = request.get_json()['token']
     
     try:
-        int(s)
+        int(token)
+
         if len(token)<=5:
             x=str(time.time())
         else:
@@ -54,7 +55,7 @@ def token():
         return x
             
     except ValueError:
-        return False
+        return "false"
 
     
 
