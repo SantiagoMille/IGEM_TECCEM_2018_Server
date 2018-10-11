@@ -20,7 +20,7 @@ def index():
 @app.route('/sendData',methods=['POST'])
 def sendData():
     try:
-        int(token)
+        float(token)
         data = request.get_json()['data']
         numbers= re.findall(r"[-+]?\d*\.\d+|\d+", data)
         print(numbers)
