@@ -20,11 +20,11 @@ def index():
 @app.route('/sendData',methods=['POST'])
 def sendData():
     try:
-        float(token)
         data = request.get_json()['data']
         numbers= re.findall(r"[-+]?\d*\.\d+|\d+", data)
         print(numbers)
         token = request.get_json()['token']
+        float(token)
         time.strftime("%c")
         url = 'data/'+token+'/'+time.strftime("%Y/%b/%d/%H:%M:%S")
         url = url.replace(".", "")
