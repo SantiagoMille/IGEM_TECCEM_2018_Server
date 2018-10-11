@@ -47,7 +47,7 @@ def token():
     token = request.get_json()['token']
     
     try:
-        int(token)
+        float(token)
 
         if len(token)<=5:
             x=str(time.time())
