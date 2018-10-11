@@ -20,6 +20,7 @@ def index():
 @app.route('/sendData',methods=['POST'])
 def sendData():
     try:
+        int(token)
         data = request.get_json()['data']
         numbers= re.findall(r"[-+]?\d*\.\d+|\d+", data)
         print(numbers)
@@ -55,7 +56,7 @@ def token():
         return x
             
     except ValueError:
-        return "false"
+        return str(time.time())
 
     
 
