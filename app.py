@@ -25,15 +25,15 @@ def sendData():
         print(numbers)
         token = request.get_json()['token']
         time.strftime("%c")
-        url = 'data/'+token+'/color/'+time.strftime("%Y/%b/%d/%H:%M:%S")
+        url = 'data/'+token+'/'+time.strftime("%Y/%b/%d/%H:%M:%S")
         url = url.replace(".", "")
         ref = db.reference(url)
         ref.set({
-        	'R':numbers[0],
-            'G':numbers[1],
-            'B':numbers[2],
-            'T':numbers[3],
-            'C':numbers[4]
+        	'R':numbers[2],
+            'G':numbers[3],
+            'B':numbers[4],
+            'T':numbers[0],
+            'C':numbers[1]
         	})
         return "true"
     except ValueError:
