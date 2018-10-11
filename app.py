@@ -45,12 +45,18 @@ def token():
     token='';
     token = request.get_json()['token']
     
-    if len(token)<=5:
-        x=str(time.time())
-    else:
-        x=token
-        
-    return x
+    try:
+        int(s)
+        if len(token)<=5:
+            x=str(time.time())
+        else:
+            x=token
+        return x
+            
+    except ValueError:
+        return False
+
+    
 
 if __name__ == "__name__":
 	app.run()
