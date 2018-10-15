@@ -1,3 +1,5 @@
+!pip install opencv-python
+!apt update && apt install -y libsm6 libxext6
 from flask import Flask, redirect, url_for, request
 import firebase_admin
 from firebase_admin import credentials
