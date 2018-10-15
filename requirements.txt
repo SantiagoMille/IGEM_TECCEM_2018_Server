@@ -2,3 +2,5 @@ firebase-admin==2.13.0
 Flask==0.12.2
 Flask-Cors==3.0.3
 gunicorn==19.9.0
+opencv-python
+numpy==1.13.3
