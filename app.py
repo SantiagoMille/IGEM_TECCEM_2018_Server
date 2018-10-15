@@ -5,7 +5,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 import time
 import re
-#import cv2 as cv
+import cv2 as cv
 import numpy as np
 import time
 import json
